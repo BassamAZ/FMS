@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: fms-gateway
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
+      password: fms1234
+      username: fms
+      
+
+zuul:
+  routes:
+    vehicle:
+      url: http://localhost:8081/fms/vehicle
+      path: /fms/vehicle/**
+    customer:
+      url: http://localhost:8081/fms/customer
+      path: /fms/customer/**
+    status:
+      url: http://localhost:8081/fms/status
+      path: /fms/status/**
