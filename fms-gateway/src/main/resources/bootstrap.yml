@@ -12,11 +12,11 @@ spring:
 zuul:
   routes:
     vehicle:
-      url: http://localhost:8081/fms/vehicle
+      url: http://localhost:8050/fms/vehicle
       path: /fms/vehicle/**
     customer:
-      url: http://localhost:8081/fms/customer
+      url: http://localhost:8051/fms/customer
       path: /fms/customer/**
     status:
-      url: http://localhost:8081/fms/status
+      url: http://localhost:8052/fms/status
       path: /fms/status/**
