@@ -1,13 +1,19 @@
 server:
-  port: 8050
+  port: 8052
 
 eureka:
   client:
-    register-with-eureka: true
-    fetch-registry: false
+    register-with-eureka: false
+    fetch-registry: true
 
 spring:
   data:
     mongodb:
       uri: mongodb+srv://awsuser:awsuser@cluster0-puwdd.mongodb.net/test?ssl=true&serverSelectionTimeoutMS=20000&connectTimeoutMS=20000&authSource=admin&retryWrites=true&maxIdleTimeMS=5000
       database: FMS
+
+fms-vehicle:
+  ribbon:
+    eureka:
+      enabled: false
+    listOfServers: http://localhost:8080
