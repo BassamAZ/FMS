@@ -4,12 +4,14 @@ import java.time.LocalDateTime;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Document(collection = "Vehicle")
 public class Vehicle {
 	
 	@Id

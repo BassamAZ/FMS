@@ -11,16 +11,17 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableEurekaClient
 @EnableHystrix
-public class FmsVehicleApplication {
+public class FmsCustomerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FmsVehicleApplication.class, args);
+		SpringApplication.run(FmsCustomerApplication.class, args);
 	}
-
+	
 	@Bean
 	@LoadBalanced
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
+
 }
 

@@ -1,33 +1,52 @@
 package com.alten.fms.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.alten.fms.model.Status;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.alten.fms.service.VehicleService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import com.alten.fms.model.Vehicle;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @RestController
+@EnableSwagger2
 @RequestMapping("/fms")
 public class VehicleController {
-	
+
+	@Autowired
+	VehicleService vehicleService;
 	
 	@GetMapping("/vehicle")
 	public List <Vehicle> getAllVehicles(){
 		
-		List <Vehicle> vehicleList= new ArrayList<Vehicle>();
-		
-		Vehicle vehicle= new Vehicle();
-		
-		vehicle.setName("BMW");
-		vehicle.setStatus(Status.CONNECTED.getStatusCode());
-		vehicleList.add(vehicle);
-		
-		return vehicleList;
+		return vehicleService.findAll();
 		
 	}
+
+	@HystrixCommand(fallbackMethod = "getDummyVehicle",   commandProperties = {
+			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000"),
+			@HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value="60") })
+	@GetMapping("/vehicle/{id}")
+	public Vehicle getVehicle(@PathVariable("id")String id){
+		return vehicleService.findById(id);
+
+	}
+
+
+	public Vehicle getDummyVehicle(String id){
+		return vehicleService.findDummyVehicle();
+	}
+
+
+	@PostMapping("/vehicle/{id}")
+	public Vehicle pulse(@PathVariable("id") String id){
+		return vehicleService.pulse(id).orElse(null);
+
+	}
+
+
 
 }
