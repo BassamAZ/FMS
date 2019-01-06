@@ -97,7 +97,7 @@ As I earlier that I’m going to use Spring Cloud to build this project. Let’s
 <img src="https://github.com/BassamAZ/FMS/blob/master/img/Fleet_Infrastructure.png" width="600">
 </p>
 
-## Config service
+## **Config service**
 
 **Spring Cloud Config** provides server-side and client-side support for externalized configuration in a distributed system. With the Config Server, you have a central place to manage external properties for applications across all environments. It is horizontally scalable centralized configuration service for distributed systems which uses a pluggable repository layer that currently supports local storage, Git, and Subversion.
 
@@ -122,6 +122,7 @@ Any client can point to this service in order to load any configuration needed h
 
 Just provide bootstrap.yml with application name and Config service url:
 
+```
 spring:
   application:
     name: vehicle-service
@@ -129,6 +130,7 @@ spring:
     config:
       uri: http://config:8888
       fail-fast: true
+```
 
 With Spring Cloud Config, you can change app configuration dynamically.
 
@@ -136,3 +138,117 @@ With Spring Cloud Config, you can change app configuration dynamically.
 
 - There are some limitations for dynamic refresh though. @RefreshScope doesn't work with @Configuration classes and doesn't affect @Scheduled methods.
 - fail-fast property means that Spring Boot application will fail startup immediately, if it cannot connect to the Config Service.
+
+
+##  **API Gateway**
+
+The API Gateway is the single entry point for all clients. It handles requests in one of two ways. Some requests are simply proxied/routed to the appropriate service. It handles other requests by fanning out to multiple services.
+
+In theory, a client could make requests to each of the microservices directly. But obviously, there are challenges and limitations with this option, like necessity to know all endpoints addresses, perform http request for each peace of information separately, merge the result on a client side. Another problem is non web-friendly protocols which might be used on the backend.
+
+Usually a much better approach is to use API Gateway. It is a single entry point into the system, used to handle requests by routing them to the appropriate backend service or by invoking multiple backend services and aggregating the results. Also, it can be used for authentication, insights, stress and canary testing, service migration, static response handling, active traffic management.
+
+I used Zuul as an implementation of API Gateway. The below snipped is what needs to be configured in this service in order to handle the routes.
+
+```
+zuul:
+  routes:
+    vehicle:
+      url: http://fms-vehicle/fms/vehicle
+      path: /fms/vehicle/**
+```
+
+In the above snipped we can see that whenever a request came to API Gateway which starts with ``/fms/vehicle`` will be routed to the exact ``fms-vehicle`` service.
+
+There is no hardcoded address, as you can see. Zuul uses Service discovery mechanism to locate ``fms-vehicle`` service instances.
+
+## **Service discovery & registry**
+
+Service instances have dynamically assigned network locations. Moreover, the set of service instances changes dynamically because of auto-scaling, failures, and upgrades. Consequently, your client code needs to use a more elaborate service discovery mechanism.
+
+Another commonly known architecture pattern is Service discovery. It allows automatic detection of network locations for service instances, which could have dynamically assigned addresses because of auto-scaling, failures and upgrades.
+
+The key part of Service discovery is **Registry**. I use Netflix Eureka in this project. Eureka is a good example of the client-side discovery pattern, when client is responsible for determining locations of available service instances (using Registry server) and load balancing requests across them.
+
+With Spring Boot, you can easily build Eureka Registry with spring-cloud-starter-eureka-server dependency, `@EnableEurekaServer` annotation and simple configuration properties.
+
+Client support enabled with `@EnableDiscoveryClient` annotation an bootstrap.yml with application name:
+
+```
+spring:
+  application:
+    name: fms-vehicle
+```
+
+Now, on application startup, it will register with Eureka Server and provide meta-data, such as host and port, health indicator URL, home page etc. Eureka receives heartbeat messages from each instance belonging to a service. If the heartbeat fails over a configurable timetable, the instance will be removed from the registry.
+
+Also, Eureka provides a simple interface, where you can track running services and a number of available instances: http://localhost:8761
+
+
+## **Load balancer, Circuit breaker and Http client**
+
+Here we are going to talk about an important tools and a mechanism behind which will be used in my services to increase the relibaility and availavilty of those services.
+
+**Ribbon**
+
+Ribbon is a client side load balancer which gives you a lot of control over the behaviour of HTTP and TCP clients. Compared to a traditional load balancer, there is no need in additional hop for every over-the-wire invocation - you can contact desired service directly.
+
+Out of the box, it natively integrates with Spring Cloud and Service Discovery. Eureka Client provides a dynamic list of available servers so Ribbon could balance between them.
+
+**Hystrix**
+
+Hystrix is the implementation of Circuit Breaker pattern, which gives a control over latency and failure from dependencies accessed over the network. The main idea is to stop cascading failures in a distributed environment with a large number of microservices. That helps to fail fast and recover as soon as possible - important aspects of fault-tolerant systems that self-heal.
+
+Besides circuit breaker control, with Hystrix you can add a fallback method that will be called to obtain a default value in case the main command fails.
+
+Moreover, Hystrix generates metrics on execution outcomes and latency for each command, that we can use to monitor system behavior.
+
+**Feign**
+
+Feign is a declarative Http client, which seamlessly integrates with Ribbon and Hystrix. Actually, with one spring-cloud-starter-feign dependency and `@EnableFeignClients` annotation you have a full set of Load balancer, Circuit breaker and Http client with sensible ready-to-go default configuration.
+
+Here is an example from fms-simulator Service:
+
+```
+@FeignClient("fms-vehicle")
+public interface VehicleClient {
+
+    @GetMapping("/fms/vehicle")
+    List<Vehicle> findAll();
+
+    @PostMapping("/fms/vehicle/{id}")
+    Optional<Vehicle> pulse(@PathVariable("id") String id);
+}
+```
+
+
+Everything you need is just an interface
+You can share `@RequestMapping` part between Spring MVC controller and Feign methods
+Above example specifies just desired service id - ``fms-vehicle`` service, thanks to autodiscovery through Eureka (but obviously you can access any resource with a specific url)
+
+## **Monitor dashboard**
+
+In this project configuration, each microservice with Hystrix on board pushes metrics to Turbine via Spring Cloud Bus (with AMQP broker). The Monitoring project is just a small Spring boot application with Turbine and Hystrix Dashboard.
+
+# **Infrastructure automation**
+
+Deploying microservices, with their interdependence, is much more complex process than deploying monolithic application. It is important to have fully automated infrastructure. We can achieve following benefits with Continuous Delivery approach:
+
+- The ability to release software anytime
+- Any build could end up being a release
+- Build artifacts once - deploy as needed
+
+Here is a simple Continuous Delivery workflow, implemented in this project:
+
+<p align="center">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/deployment.png" width="600">
+</p>
+
+In this configuration, Travis CI builds tagged images for each successful git push. So, there are always latest image for each microservice on Docker Hub and older images, tagged with git commit hash. It's easy to deploy any of them and quickly rollback, if needed.
+
+**Important endpoints**
+
+- http://localhost:80 - Gateway
+- http://localhost:8761 - Eureka Dashboard
+- http://localhost:8866/hystrix - Hystrix Dashboard 
+- (Turbine stream link: http://turbine-stream-service:8020/turbine/turbine.stream)
