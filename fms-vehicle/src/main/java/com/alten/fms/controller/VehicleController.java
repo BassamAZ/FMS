@@ -1,15 +1,14 @@
 package com.alten.fms.controller;
 
-import java.util.List;
-
+import com.alten.fms.model.Vehicle;
 import com.alten.fms.service.VehicleService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import com.alten.fms.model.Vehicle;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.List;
 
 @RestController
 @EnableSwagger2

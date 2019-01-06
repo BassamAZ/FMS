@@ -1,7 +1,5 @@
 package com.alten.fms.model;
 
-import org.springframework.data.annotation.Id;
-
 public enum Status {
 
     CONNECTED ("1","Connected Status"),
