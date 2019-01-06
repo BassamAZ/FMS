@@ -7,6 +7,10 @@
 [![Sonar](https://sonarcloud.io/api/project_badges/measure?project=BassamAZ_FMS&metric=alert_status
 )](https://sonarcloud.io/dashboard?id=BassamAZ_FMS)
 
+[![Sonar](https://sonarcloud.io/api/project_badges/measure?project=BassamAZ_FMS&metric=reliability_rating
+)](https://sonarcloud.io/dashboard?id=BassamAZ_FMS)
+
+[![Sonar](https://sonarcloud.io/api/project_badges/measure?project=BassamAZ_FMS&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=BassamAZ_FMS)
 
 # **Fleet Management System**
 
