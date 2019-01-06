@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/BassamAZ/metrics.svg?branch=master)](https://travis-ci.org/BassamAZ/metrics)
+
+
 # **Fleet Management System**
 
 **An easy way to manage your fleet.**
@@ -7,7 +10,7 @@ The purpose of Fleet Management in a business is to ensure the work vehicles of 
 **Fleet management system (FMS)** : is the applications, tools, technologies and practices that help businesses maintain optimal use of their work vehicles from a central platform. 
 
 <p align="center">
-<img src="https://github.com/BassamAZ/FMS/blob/master/img/fms.png" width="600">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/fms.png" width="400">
 </p>
 
 ## **Required Scope**
