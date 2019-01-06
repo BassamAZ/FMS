@@ -9,6 +9,20 @@ cache:
 
 script: 
     - cd fms-config
-    - mvn clean install -DskipTests
+    - mvn clean install
+    - cd ../fms-registry
+    - mvn clean install
+    - cd ../fms-gateway
+    - mvn clean install
+    - cd ../fms-monitoring
+    - mvn clean install
+    - cd ../fms-turbine-stream-service
+    - mvn clean install
+    - cd ../fms-vehicle
+    - mvn clean install
+    - cd ../fms-customer
+    - mvn clean install
+    - cd ../fms-simulator
+    - mvn clean install
 after_success:
   - bash <(curl -s https://codecov.io/bash)
