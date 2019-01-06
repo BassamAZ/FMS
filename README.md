@@ -52,7 +52,11 @@ FMS will be decomposed into three core microservices. All of them are independen
 
 Contains general vehicle methods which commonly used by other clients: retrieve vehicle details and register/update vehicle data.
 
-
+| Method | Path                | Description                  | User authenticated | Available from UI |
+|--------|---------------------|------------------------------|--------------------|-------------------|
+| GET    | /vehicles/{vehicle} | Get specified vehicle data   |                    |                   |
+| GET    | /vehicles/          | Get all vehicles data        |                    |                   |
+| POST   | /vehicles/{vehicle} | Register/Update vehicle data |                    |                   |
 
 
 **Customer service**
