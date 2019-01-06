@@ -6,4 +6,6 @@ The purpose of Fleet Management in a business is to ensure the work vehicles of 
 
 **Fleet management system (FMS)** : is the applications, tools, technologies and practices that help businesses maintain optimal use of their work vehicles from a central platform. 
 
-<img align="center" src="https://github.com/BassamAZ/FMS/blob/master/img/fms.png" width="200">
+<p align="center">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/fms.png" width="300">
+</p>
