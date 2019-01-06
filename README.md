@@ -7,7 +7,7 @@ The purpose of Fleet Management in a business is to ensure the work vehicles of 
 **Fleet management system (FMS)** : is the applications, tools, technologies and practices that help businesses maintain optimal use of their work vehicles from a central platform. 
 
 <p align="center">
-<img src="https://github.com/BassamAZ/FMS/blob/master/img/fms.png" width="400">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/fms.png" width="600">
 </p>
 
 ## **Required Scope**
@@ -37,7 +37,7 @@ We have the below assumption and considerations of the required business:
 We will build the required FMS using Microservices Architecture using Spring Boot, Spring Cloud and Docker. With a pretty neat user interface, by the way.
 
 <p align="center">
-<img src="https://github.com/BassamAZ/FMS/blob/master/img/architecture.png" width="400">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/architecture.png" width="600">
 </p>
 
 ## **Functional services**
@@ -45,7 +45,7 @@ We will build the required FMS using Microservices Architecture using Spring Boo
 FMS will be decomposed into three core microservices. All of them are independently deployable applications, organized around certain business domains.
 
 <p align="center">
-<img src="https://github.com/BassamAZ/FMS/blob/master/img/fleet_functional_services.png" width="400">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/fleet_functional_services.png" width="600">
 </p>
 
 **Vehicle service**
@@ -86,7 +86,7 @@ In microservice architecture are we have a set of methodologies and patterns whi
 As I earlier that I’m going to use Spring Cloud to build this project. Let’s discover this area in terms of architecture, implementations and benefits.
 
 <p align="center">
-<img src="https://github.com/BassamAZ/FMS/blob/master/img/Fleet_Infrastructure.png" width="400">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/Fleet_Infrastructure.png" width="600">
 </p>
 
 ## Config service
