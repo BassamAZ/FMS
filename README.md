@@ -52,6 +52,9 @@ FMS will be decomposed into three core microservices. All of them are independen
 
 Contains general vehicle methods which commonly used by other clients: retrieve vehicle details and register/update vehicle data.
 
+
+
+
 **Customer service**
 
 Contains general customer methods which commonly used by other clients: retrieve customer details and register/update customer data.
@@ -71,3 +74,53 @@ Notes:
     - Each service can use the type of database that is best suited to its needs. For example, a service that does text searches could use ElasticSearch. A service that manipulates a social graph could use Neo4j.
 - In this project, I use MongoDB as a primary database for each service.
 - Service-to-service communication is quite simplified: microservices talking using only synchronous REST API. Common practice in a real-world systems is to use combination of interaction styles. For example, perform synchronous GET request to retrieve data and use asynchronous approach via Message broker for create/update operations in order to decouple services and buffer messages. However, this brings us to the eventual consistency world.
+
+## **Infrastructure services**
+
+In microservice architecture are we have a set of methodologies and patterns which we need to follow in order to have a solid architecture and avoid most common problems. Spring Cloud has proven the way of building microservice infrastructure with an easy way. 
+
+As I earlier that I’m going to use Spring Cloud to build this project. Let’s discover this area in terms of architecture, implementations and benefits.
+
+<p align="center">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/Fleet_Infrastructure.png" width="400">
+</p>
+
+## Config service
+
+**Spring Cloud Config** provides server-side and client-side support for externalized configuration in a distributed system. With the Config Server, you have a central place to manage external properties for applications across all environments. It is horizontally scalable centralized configuration service for distributed systems which uses a pluggable repository layer that currently supports local storage, Git, and Subversion.
+
+**Features**
+
+Spring Cloud Config Server features:
+
+- HTTP, resource-based API for external configuration (name-value pairs, or equivalent YAML content)
+- Encrypt and decrypt property values (symmetric or asymmetric)
+- Embeddable easily in a Spring Boot application using @EnableConfigServer
+
+
+Config Client features (for Spring applications):
+
+- Bind to the Config Server and initialize Spring Environment with remote property sources
+- Encrypt and decrypt property values (symmetric or asymmetric)
+
+
+**Client-side usage**
+
+Any client can point to this service in order to load any configuration needed hence you don’t need to lead any properties in your application.
+
+Just provide bootstrap.yml with application name and Config service url:
+
+spring:
+  application:
+    name: vehicle-service
+  cloud:
+    config:
+      uri: http://config:8888
+      fail-fast: true
+
+With Spring Cloud Config, you can change app configuration dynamically.
+
+**Notes**
+
+- There are some limitations for dynamic refresh though. @RefreshScope doesn't work with @Configuration classes and doesn't affect @Scheduled methods.
+- fail-fast property means that Spring Boot application will fail startup immediately, if it cannot connect to the Config Service.
