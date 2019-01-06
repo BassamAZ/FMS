@@ -16,28 +16,6 @@ script:
     - cd fms-config
     - mvn clean install
     - sonar-scanner
-    - cd ../fms-registry
-    - mvn clean install
-    - sonar-scanner
-    - cd ../fms-gateway
-    - mvn clean install
-    - sonar-scanner
-    - cd ../fms-monitoring
-    - mvn clean install
-    - sonar-scanner
-    - cd ../fms-turbine-stream-service
-    - mvn clean install
-    - sonar-scanner
-    - cd ../fms-vehicle
-    - mvn clean install
-    - sonar-scanner
-    - cd ../fms-customer
-    - mvn clean install
-    - sonar-scanner
-    - cd ../fms-simulator
-    - mvn clean install
-    - sonar-scanner
 
 after_success:
-    - cd fms-config
     - bash <(curl -s https://codecov.io/bash)
