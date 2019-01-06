@@ -7,9 +7,7 @@ cache:
   directories:
   - "$HOME/.cache"
 
-deploy:
-  provider: script
-  script: 
+script: 
     - cd fms-config
     - mvn clean install -DskipTests
 after_success:
