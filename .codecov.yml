@@ -1,0 +1,14 @@
+codecov:
+  disable_default_path_fixes: true
+
+coverage:
+  status:
+    project: no
+    patch: yes
+    changes: no
+  precision: 2
+  round: down
+  range: "70...100"
+
+fixes:
+  - "home/travis/build/fms-config"
