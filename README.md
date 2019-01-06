@@ -8,3 +8,4 @@ The purpose of Fleet Management in a business is to ensure the work vehicles of 
 
 ![alt](https://github.com/BassamAZ/FMS/blob/master/img/fms.png)
 
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/fms.png" width="48">
