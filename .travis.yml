@@ -6,23 +6,29 @@ install: true
 cache:
   directories:
   - "$HOME/.cache"
-
+addons:
+  sonarcloud:
+    organization: "bassamaz-github" # the key of the org you chose at step #3
+    token:
+      secure: 13bb79d19f78c093008484165c479ad47efd994e # encrypted value of your token
+      
 script: 
     - cd fms-config
     - mvn clean install
-    - cd ../fms-registry
-    - mvn clean install
-    - cd ../fms-gateway
-    - mvn clean install
-    - cd ../fms-monitoring
-    - mvn clean install
-    - cd ../fms-turbine-stream-service
-    - mvn clean install
-    - cd ../fms-vehicle
-    - mvn clean install
-    - cd ../fms-customer
-    - mvn clean install
-    - cd ../fms-simulator
-    - mvn clean install
+    #- cd ../fms-registry
+    #- mvn clean install
+    #- cd ../fms-gateway
+    #- mvn clean install
+    #- cd ../fms-monitoring
+    #- mvn clean install
+    #- cd ../fms-turbine-stream-service
+    #- mvn clean install
+    #- cd ../fms-vehicle
+    #- mvn clean install
+    #- cd ../fms-customer
+    #- mvn clean install
+    #- cd ../fms-simulator
+    #- mvn clean install
+    - sonar-scanner
 after_success:
   - bash <(curl -s https://codecov.io/bash)
