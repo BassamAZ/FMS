@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/211e49ee51144d66a88f477bc2155434)](https://app.codacy.com/app/BassamAZ/FMS?utm_source=github.com&utm_medium=referral&utm_content=BassamAZ/FMS&utm_campaign=Badge_Grade_Settings)
 [![Build Status](https://travis-ci.org/BassamAZ/metrics.svg?branch=master)](https://travis-ci.org/BassamAZ/metrics)
 
 
