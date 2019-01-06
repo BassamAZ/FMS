@@ -24,7 +24,7 @@ public class SwaggerConfig {
                 .build();
     }
 
-    private ApiInfo apiInfo() {
+    /*private ApiInfo apiInfo() {
         return new ApiInfo(
                 "Customer API",
                 "This is the Customer API which is used to execute basic operation on Customer.",
@@ -32,5 +32,5 @@ public class SwaggerConfig {
                 "",
                 new Contact("Bassam AbouZaid", "", "b.s.abouzaid@gmail.com"),
                 "", "", Collections.emptyList());
-    }
+    }*/
 }

@@ -1,5 +1,6 @@
 package com.alten.fms;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +12,9 @@ public class FmsGatewayApplicationTests {
 
 	@Test
 	public void contextLoads() {
+
+		Assert.assertEquals("done","done");
+
 	}
 
 }
