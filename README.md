@@ -4,6 +4,8 @@
 
 [![codecov](https://codecov.io/gh/BassamAZ/FMS/branch/master/graph/badge.svg)](https://codecov.io/gh/BassamAZ/FMS)
 
+[![Sonar](https://sonarcloud.io/api/project_badges/measure?project=BassamAZ_FMS&metric=alert_status
+)](https://sonarcloud.io/dashboard?id=BassamAZ_FMS)
 
 
 # **Fleet Management System**
@@ -62,15 +64,20 @@ Contains general vehicle methods which commonly used by other clients: retrieve 
 
 | Method | Path                | Description                  | User authenticated | Available from UI |
 |--------|---------------------|------------------------------|--------------------|-------------------|
-| GET    | /vehicles/{vehicle} | Get specified vehicle data   |                    |                   |
-| GET    | /vehicles/          | Get all vehicles data        |                    |                   |
-| POST   | /vehicles/{vehicle} | Register/Update vehicle data |                    |                   |
+| GET    | /vehicle/{id}      | Get specified vehicle data   |                    |                   |
+| GET    | /vehicle/          | Get all vehicles data        |                    |                   |
+| POST   | /vehicle/{vehicle} | Register/Update vehicle data |                    |                   |
 
 
 **Customer service**
 
 Contains general customer methods which commonly used by other clients: retrieve customer details and register/update customer data.
 
+| Method | Path           | Description                 | User authenticated | Available from UI |
+|--------|----------------|-----------------------------|--------------------|-------------------|
+| GET    | /customer/{id} | Get specified customer data |                    |                   |
+| GET    | /customer/     | Get all customers data      |                    |                   |
+| POST   | /customer/     | Crate/Update customer data  |                    |                   |
 
 **Status service**
 
