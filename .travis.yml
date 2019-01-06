@@ -1,6 +1,7 @@
-sudo: false
+sudo: required
 language: java
 jdk: oraclejdk8
+install: true
 
 cache:
   directories:
@@ -11,8 +12,5 @@ deploy:
   script: 
     - cd fms-config
     - mvn clean install -DskipTests
-  skip_cleanup: true
-  on:
-    tags: true
 after_success:
   - bash <(curl -s https://codecov.io/bash)
