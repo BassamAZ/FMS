@@ -12,6 +12,7 @@ public class FmsConfigApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		FmsConfigApplication fmsConfigApplication= new FmsConfigApplication();
 		Assert.assertEquals("done","done");
 
 	}
