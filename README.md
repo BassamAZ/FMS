@@ -87,6 +87,10 @@ Contains general customer methods which commonly used by other clients: retrieve
 
 Preform calculations on specific data values and capture updated time stamp for each vehicle. This data is used to track the vehicle status.
 
+| Method | Path                | Description         | User authenticated | Available from UI |
+|--------|---------------------|---------------------|--------------------|-------------------|
+| GET    | /status/{vehicleId} | Get specific status |                    |                   |
+| GET    | /status/            | Get all status data |                    |                   |
 
 Notes:
 
@@ -184,12 +188,12 @@ The key part of Service discovery is **Registry**. I use Netflix Eureka in this 
 The below screenshots depects a read Eureka view of FMS application.
 
 <p align="center">
-<img src="https://github.com/BassamAZ/FMS/blob/master/img/eureka.png" width="600">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/eureka.png" width="800">
 </p>
 
 
 <p align="center">
-<img src="https://github.com/BassamAZ/FMS/blob/master/img/eureka_instances.png" width="600">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/eureka_instances.png" width="800">
 </p>
 
 
