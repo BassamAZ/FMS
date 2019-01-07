@@ -12,41 +12,67 @@ addons:
     token:
       secure: 13bb79d19f78c093008484165c479ad47efd994e # encrypted value of your token
       
+services:
+  - docker
+
+before_install:
+  - cp docker-compose.yml
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  
 script: 
     - cd fms-config
     - mvn clean install
     - sonar-scanner
+    - docker build -t $DOCKER_USERNAME/fms-config:$TRAVIS_BUILD_ID .
+    - docker push $DOCKER_USERNAME/fms-config:$TRAVIS_BUILD_ID
     
     - cd ../fms-registry
     - mvn clean install
     - sonar-scanner
+    - docker build -t $DOCKER_USERNAME/fms-registry:$TRAVIS_BUILD_ID .
+    - docker push $DOCKER_USERNAME/fms-registry:$TRAVIS_BUILD_ID
     
     - cd ../fms-gateway
     - mvn clean install
     - sonar-scanner
+    - docker build -t $DOCKER_USERNAME/fms-gateway:$TRAVIS_BUILD_ID .
+    - docker push $DOCKER_USERNAME/fms-gateway:$TRAVIS_BUILD_ID
     
     - cd ../fms-monitoring
     - mvn clean install
     - sonar-scanner
+    - docker build -t $DOCKER_USERNAME/fms-monitoring:$TRAVIS_BUILD_ID .
+    - docker push $DOCKER_USERNAME/fms-monitoring:$TRAVIS_BUILD_ID
     
-    - cd ../fms-turbine-stream-service
+    - cd ../fms-turbine-stream
     - mvn clean install
     - sonar-scanner
+    - docker build -t $DOCKER_USERNAME/fms-turbine-stream:$TRAVIS_BUILD_ID .
+    - docker push $DOCKER_USERNAME/fms-turbine-stream:$TRAVIS_BUILD_ID
     
     - cd ../fms-vehicle
     - mvn clean install
     - sonar-scanner
+    - docker build -t $DOCKER_USERNAME/fms-vehicle:$TRAVIS_BUILD_ID .
+    - docker push $DOCKER_USERNAME/fms-vehicle:$TRAVIS_BUILD_ID
     
     - cd ../fms-customer
     - mvn clean install
     - sonar-scanner
+    - docker build -t $DOCKER_USERNAME/fms-customer:$TRAVIS_BUILD_ID .
+    - docker push $DOCKER_USERNAME/fms-customer:$TRAVIS_BUILD_ID
     
     - cd ../fms-status
     - mvn clean install
     - sonar-scanner
+    - docker build -t $DOCKER_USERNAME/fms-status:$TRAVIS_BUILD_ID .
+    - docker push $DOCKER_USERNAME/fms-status:$TRAVIS_BUILD_ID
     
     - cd ../fms-simulator
     - mvn clean install
     - sonar-scanner
+    - docker build -t $DOCKER_USERNAME/fms-simulator:$TRAVIS_BUILD_ID .
+    - docker push $DOCKER_USERNAME/fms-simulator:$TRAVIS_BUILD_ID
+    
 after_success:
     - bash <(curl -s https://codecov.io/bash)
