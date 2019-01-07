@@ -263,3 +263,5 @@ In this configuration, Travis CI builds tagged images for each successful git pu
 - http://localhost:8761 - Eureka Dashboard
 - http://localhost:8866/hystrix - Hystrix Dashboard 
 - (Turbine stream link: http://turbine-stream-service:8020/turbine/turbine.stream)
+- http://localhost:8050/swagger-ui.html - Swagger API docuemntation (Vehicle-API)
+- 
