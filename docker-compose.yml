@@ -1,0 +1,108 @@
+version: '3.4'
+services:
+  config-service:
+    build: ./fms-config
+    image: bassam-az/fms-config
+    ports:
+      - '8888:8888'
+    networks:
+      - fms_app_net
+      
+  registry-service:
+    build: ./fms-registry
+    image: bassam-az/fms-registry
+    ports:
+      - '8761:8761'
+    depends_on:
+      - config-service
+    networks:
+      - fms_app_net
+
+  gateway-service:
+    build: ./fms-gateway
+    image: bassam-az/fms-gateway
+    ports:
+      - '8080:8080'
+    depends_on:
+      - config-service
+      - registry-service
+      - vehicle-service
+      - customer-service
+      - status-service
+    networks:
+      - fms_app_net
+      
+  monitoring-service:
+    build: ./fms-monitoring
+    image: bassam-az/fms-monitoring
+    ports:
+      - '8866:8866'
+    depends_on:
+      - config-service
+      - registry-service
+    networks:
+      - fms_app_net
+      
+  turbin-stream-service:
+    build: ./fms-turbin-stream
+    image: bassam-az/fms-turbin-stream
+    ports:
+      - '8020:8020'
+    depends_on:
+      - config-service
+      - registry-service
+      - monitoring-service
+    networks:
+      - fms_app_net
+      
+  vehicle-service:
+    build: ./fms-vehicle
+    image: bassam-az/fms-vehicle
+    ports:
+      - '8050:8050'
+    depends_on:
+      - config-service
+      - registry-service
+    networks:
+      - fms_app_net
+      
+  customer-service:
+    build: ./fms-customer
+    image: bassam-az/fms-customer
+    ports:
+      - '8051:8051'
+    depends_on:
+      - config-service
+      - registry-service
+    networks:
+      - fms_app_net
+      
+  status-service:
+    build: ./fms-status
+    image: bassam-az/fms-status
+    ports:
+      - '8052:8052'
+    depends_on:
+      - config-service
+      - registry-service
+      - vehicle-service
+      - customer-service
+    networks:
+      - fms_app_net
+
+  simulator-service:
+    build: ./fms-simulator
+    image: bassam-az/fms-simulator
+    ports:
+      - '8053:8053'
+    depends_on:
+      - config-service
+      - registry-service
+      - vehicle-service
+      - customer-service
+    networks:
+      - fms_app_net
+
+networks:
+  fms_app_net:
+    driver: bridge
