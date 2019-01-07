@@ -1,5 +1,6 @@
 package fms.error;
 
+import com.alten.fms.FmsStatusApplication;
 import com.alten.fms.error.ErrorHandler;
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes={FmsStatusApplication.class})
 public class ErrorHandlerTest {
 
 
