@@ -67,7 +67,7 @@ public class VehicleService {
 
         return Optional.ofNullable(vehicleRepository.findById(id).map(vehicle -> {
             vehicle.setStatus(Status.CONNECTED.getStatusCode());
-            vehicle.setLatUpdatedDate(LocalDateTime.now());
+            vehicle.setLastUpdatedDate(LocalDateTime.now());
             vehicleRepository.save(vehicle);
             return vehicle;
         }).orElse(null));

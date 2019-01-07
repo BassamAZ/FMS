@@ -22,7 +22,7 @@ public class Vehicle {
 	private String plateNumber;
 	private String registrationNumber;
 	private String status;
-	private LocalDateTime latUpdatedDate;
+	private LocalDateTime lastUpdatedDate;
 
 	public String getId() {
 		return id;
@@ -48,8 +48,8 @@ public class Vehicle {
 		return status;
 	}
 
-	public LocalDateTime getLatUpdatedDate() {
-		return latUpdatedDate;
+	public LocalDateTime getLastUpdatedDate() {
+		return lastUpdatedDate;
 	}
 
 	public void setId(String id) {
@@ -76,7 +76,7 @@ public class Vehicle {
 		this.status = status;
 	}
 
-	public void setLatUpdatedDate(LocalDateTime latUpdatedDate) {
-		this.latUpdatedDate = latUpdatedDate;
+	public void setLastUpdatedDate(LocalDateTime lastUpdatedDate) {
+		this.lastUpdatedDate = lastUpdatedDate;
 	}
 }
