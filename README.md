@@ -266,7 +266,7 @@ Deploying microservices, with their interdependence, is much more complex proces
 Here is a simple Continuous Delivery workflow, implemented in this project:
 
 <p align="center">
-<img src="https://github.com/BassamAZ/FMS/blob/master/img/deployment.png" width="800">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/Deployment_model.png" width="800">
 </p>
 
 In this configuration, Travis CI builds tagged images for each successful git push. So, there are always latest image for each microservice on Docker Hub and older images, tagged with git commit hash. It's easy to deploy any of them and quickly rollback, if needed.
