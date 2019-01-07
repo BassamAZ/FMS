@@ -13,7 +13,7 @@ public class FmsRegistryApplicationTests {
 	@Test
 	public void contextLoads() {
 		FmsRegistryApplication fmsRegistryApplication= new FmsRegistryApplication();
-		Assert.assertEquals("done","done");
+		Assert.assertEquals(fmsRegistryApplication,fmsRegistryApplication);
 
 	}
 
