@@ -43,9 +43,9 @@ services:
     networks:
       - fms_app_net
       
-  turbin-stream-service:
-    build: ./fms-turbin-stream
-    image: bassam-az/fms-turbin-stream
+  turbine-stream-service:
+    build: ./fms-turbine-stream
+    image: bassam-az/fms-turbine-stream
     ports:
       - '8020:8020'
     depends_on:

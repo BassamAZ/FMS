@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.alten</groupId>
-	<artifactId>fms-turbine-stream-service</artifactId>
+	<artifactId>fms-turbine-stream</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>fms-turbine-stream-service</name>
+	<name>fms-turbine-stream</name>
 	<description>turbine stream service for fms</description>
 
 	<properties>
