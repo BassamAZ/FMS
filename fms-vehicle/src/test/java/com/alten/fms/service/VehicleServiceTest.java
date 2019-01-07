@@ -1,27 +1,23 @@
 package com.alten.fms.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import com.alten.fms.model.Vehicle;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class VehicleServiceTest {
+public class VehicleServiceTest {
 
 	@Autowired
 	VehicleService vehicleService;
 
-	@org.junit.Test
+	@Test
 	public void testFindAll() {
 
 		List<Vehicle> customerList=vehicleService.findAll();
@@ -29,12 +25,12 @@ class VehicleServiceTest {
 
 	}
 
-	@org.junit.Test(expected = IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testFindByIdWithEmptyValue() {
 		vehicleService.findById("");
 	}
 
-	@org.junit.Test
+	@Test
 	public void testFindByIdWithExitingValue() {
 		Vehicle vehicle=vehicleService.findById("5c2e7c423650c5ca72a8e661");
 
@@ -42,12 +38,12 @@ class VehicleServiceTest {
 
 	}
 
-	@org.junit.Test(expected = IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testFindByNameWithEmptyValue() {
 		vehicleService.findByName("");
 	}
 
-	@org.junit.Test
+	@Test
 	public void testFindByNameWithExitingValue() {
 		List<Vehicle> vehicle=vehicleService.findByName("cartest");
 
@@ -55,12 +51,12 @@ class VehicleServiceTest {
 
 	}
 
-	@org.junit.Test(expected = IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testFindByPlateNumberWithEmptyValue() {
 		vehicleService.findByPlateNumber("");
 	}
 
-	@org.junit.Test
+	@Test
 	public void testFindByPlateNumberWithExistingValue() {
 		Vehicle vehicle=vehicleService.findByPlateNumber("1234");
 
@@ -73,7 +69,7 @@ class VehicleServiceTest {
 		vehicleService.findByRegistrationNumber("");
 	}
 
-	@org.junit.Test
+	@Test
 	public void testFindByRegistrationNumberWithExistingValue() {
 		Vehicle vehicle=vehicleService.findByRegistrationNumber("4321");
 
@@ -82,7 +78,7 @@ class VehicleServiceTest {
 	}
 
 
-	@org.junit.Test
+	@Test
 	public void testFindDummyCustomer() {
 		Vehicle vehicle=vehicleService.findDummyVehicle();
 
