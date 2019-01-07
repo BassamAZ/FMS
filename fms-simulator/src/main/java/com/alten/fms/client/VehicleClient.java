@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 import java.util.Optional;
 
-@FeignClient("fms-vehicle")
+@FeignClient(name="fms-vehicle" ,url="http://localhost:8080")
 public interface VehicleClient {
 
     @GetMapping("/fms/vehicle")
