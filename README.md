@@ -107,7 +107,7 @@ In microservice architecture are we have a set of methodologies and patterns whi
 As I earlier that I’m going to use Spring Cloud to build this project. Let’s discover this area in terms of architecture, implementations and benefits.
 
 <p align="center">
-<img src="https://github.com/BassamAZ/FMS/blob/master/img/Fleet_Infrastructure.png" width="600">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/Fleet_Infrastructure.png" width="800">
 </p>
 
 ## **Config service**
@@ -186,12 +186,12 @@ The key part of Service discovery is **Registry**. I use Netflix Eureka in this 
 The below screenshots depects a read Eureka view of FMS application.
 
 <p align="center">
-<img src="https://github.com/BassamAZ/FMS/blob/master/img/eureka.png" width="800">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/eureka.png" width="1000">
 </p>
 
 
 <p align="center">
-<img src="https://github.com/BassamAZ/FMS/blob/master/img/eureka_instances.png" width="800">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/eureka_instances.png" width="1000">
 </p>
 
 
