@@ -181,6 +181,18 @@ Another commonly known architecture pattern is Service discovery. It allows auto
 
 The key part of Service discovery is **Registry**. I use Netflix Eureka in this project. Eureka is a good example of the client-side discovery pattern, when client is responsible for determining locations of available service instances (using Registry server) and load balancing requests across them.
 
+The below screenshots depects a read Eureka view of FMS application.
+
+<p align="center">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/eureka.png" width="400">
+</p>
+
+
+<p align="center">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/eureka_instances.png" width="400">
+</p>
+
+
 With Spring Boot, you can easily build Eureka Registry with spring-cloud-starter-eureka-server dependency, `@EnableEurekaServer` annotation and simple configuration properties.
 
 Client support enabled with `@EnableDiscoveryClient` annotation an bootstrap.yml with application name:

@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: fms-status
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
+      password: fms1234
+      username: fms
