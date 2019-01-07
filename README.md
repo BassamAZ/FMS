@@ -184,12 +184,12 @@ The key part of Service discovery is **Registry**. I use Netflix Eureka in this 
 The below screenshots depects a read Eureka view of FMS application.
 
 <p align="center">
-<img src="https://github.com/BassamAZ/FMS/blob/master/img/eureka.png" width="400">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/eureka.png" width="600">
 </p>
 
 
 <p align="center">
-<img src="https://github.com/BassamAZ/FMS/blob/master/img/eureka_instances.png" width="400">
+<img src="https://github.com/BassamAZ/FMS/blob/master/img/eureka_instances.png" width="600">
 </p>
 
 
