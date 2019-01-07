@@ -82,7 +82,7 @@ public class VehicleServiceTest {
 	public void testFindDummyCustomer() {
 		Vehicle vehicle=vehicleService.findDummyVehicle();
 
-		Assert.assertEquals(vehicleService,vehicleService);
+		Assert.assertEquals(vehicle,vehicle);
 	}
 
 
