@@ -41,6 +41,10 @@ script:
     - mvn clean install
     - sonar-scanner
     
+    - cd ../fms-status
+    - mvn clean install
+    - sonar-scanner
+    
     - cd ../fms-simulator
     - mvn clean install
     - sonar-scanner
