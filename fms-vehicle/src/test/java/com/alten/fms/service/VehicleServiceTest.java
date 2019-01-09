@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -77,9 +78,22 @@ public class VehicleServiceTest {
 
 	}
 
+	@Test
+	public void testPingWithExitingValue() {
+		Optional<Vehicle> vehicleList=vehicleService.pulse("5c2e7c423650c5ca72a8e661");
+		Assert.assertEquals(vehicleList.isPresent(),true);
+
+	}
+
+	@org.junit.Test(expected = IllegalArgumentException.class)
+	public void testPingWithEmptyValue() {
+		Optional<Vehicle> vehicleList=vehicleService.pulse("");
+
+	}
+
 
 	@Test
-	public void testFindDummyCustomer() {
+	public void testFindDummyVehicle() {
 		Vehicle vehicle=vehicleService.findDummyVehicle();
 
 		Assert.assertEquals(vehicle,vehicle);

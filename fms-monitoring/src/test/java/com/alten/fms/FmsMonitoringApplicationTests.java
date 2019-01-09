@@ -12,6 +12,7 @@ public class FmsMonitoringApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		FmsMonitoringApplication.main(new String[]{""});
 
 		Assert.assertEquals("done","done");
 

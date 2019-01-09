@@ -13,7 +13,7 @@ public class FmsVehicleApplicationTests {
 
 	@Test
 	public void contextLoads() {
-
+		FmsVehicleApplication.main(new String[]{""});
 		Assert.assertEquals("done","done");
 
 	}

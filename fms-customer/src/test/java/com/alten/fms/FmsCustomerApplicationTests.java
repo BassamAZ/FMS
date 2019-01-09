@@ -12,6 +12,8 @@ public class FmsCustomerApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		FmsCustomerApplication.main(new String[]{""});
+
 		Assert.assertEquals("done","done");
 
 	}

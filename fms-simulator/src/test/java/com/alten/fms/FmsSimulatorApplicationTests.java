@@ -12,6 +12,7 @@ public class FmsSimulatorApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		FmsSimulatorApplication.main(new String[]{""});
 
 		Assert.assertEquals("done","done");
 

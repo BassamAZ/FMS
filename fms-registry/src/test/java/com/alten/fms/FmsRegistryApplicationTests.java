@@ -12,6 +12,7 @@ public class FmsRegistryApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		FmsRegistryApplication.main(new String[]{""});
 		Assert.assertEquals("done","done");
 
 	}

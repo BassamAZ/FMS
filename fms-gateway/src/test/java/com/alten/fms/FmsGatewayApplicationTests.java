@@ -12,6 +12,7 @@ public class FmsGatewayApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		FmsGatewayApplication.main(new String[]{""});
 
 		Assert.assertEquals("done","done");
 
