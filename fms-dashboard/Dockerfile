@@ -27,16 +27,16 @@ RUN sudo npm install -g @angular/cli@1.7.1 --unsafe-perm=true --allow-root
 COPY . /usr/src/app
 RUN ng build
 
-RUN cd /usr/src/app
+#RUN cd /usr/src/app
 
-FROM nginx:alpine
-COPY nginx.conf /etc/nginx/nginx.conf
+#FROM nginx:alpine
+#COPY nginx.conf /etc/nginx/nginx.conf
 
-RUN rm -rf /usr/share/nginx/html/*
-COPY --from=builder /usr/src/app/dist/fms-dashboard /usr/share/nginx/html
+#RUN rm -rf /usr/share/nginx/html/*
+#COPY --from=builder /usr/src/app/dist/fms-dashboard /usr/share/nginx/html
 #COPY --from=builder /usr/src/app/entrypoint.sh /usr/share/nginx/
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+#EXPOSE 80
+#CMD ["nginx", "-g", "daemon off;"]
 #RUN chmod +x /usr/share/nginx/entrypoint.sh
 #CMD ["/bin/sh", "/usr/share/nginx/entrypoint.sh"]
 
