@@ -24,59 +24,5 @@ public class Vehicle {
 	private String status;
 	private LocalDateTime lastUpdatedDate;
 
-	public String getId() {
-		return id;
-	}
 
-	public String getName() {
-		return name;
-	}
-
-	public String getModel() {
-		return model;
-	}
-
-	public String getPlateNumber() {
-		return plateNumber;
-	}
-
-	public String getRegistrationNumber() {
-		return registrationNumber;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public LocalDateTime getLastUpdatedDate() {
-		return lastUpdatedDate;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setModel(String model) {
-		this.model = model;
-	}
-
-	public void setPlateNumber(String plateNumber) {
-		this.plateNumber = plateNumber;
-	}
-
-	public void setRegistrationNumber(String registrationNumber) {
-		this.registrationNumber = registrationNumber;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public void setLastUpdatedDate(LocalDateTime lastUpdatedDate) {
-		this.lastUpdatedDate = lastUpdatedDate;
-	}
 }
