@@ -10,7 +10,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Document(collection = "Customer")
 public class Customer {
 
@@ -19,6 +18,16 @@ public class Customer {
     private String name;
     private String age;
     private List<String> vehicleIds;
+
+
+    public Customer(String id, String name, String age, List<String> vehicleIds){
+
+        this.id=id;
+        this.name=name;
+        this.age=age;
+        this.vehicleIds=vehicleIds;
+
+    }
 
 
     public String getId() {

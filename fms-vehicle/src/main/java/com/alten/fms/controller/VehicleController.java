@@ -46,6 +46,11 @@ public class VehicleController {
 
 	}
 
+	public void setVehicleService(VehicleService vehicleService) {
+		this.vehicleService = vehicleService;
+	}
 
-
+	public VehicleService getVehicleService() {
+		return vehicleService;
+	}
 }

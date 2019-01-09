@@ -39,5 +39,12 @@ public class StatusController {
 	}
 
 
+	public void setStatusService(StatusService statusService) {
+		this.statusService = statusService;
+	}
 
+	public StatusService getStatusService() {
+		return statusService;
+	}
 }
+
