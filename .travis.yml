@@ -81,12 +81,12 @@ after_success:
     - bash <(curl -s https://codecov.io/bash)
     
 deploy:
-    - provider: codedeploy
-    - access_key_id: "AKIAIWESFIDPAVNZH7XA"
-    - secret_access_key: "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"
-    - bucket: fms-dashboard-codedeploy
-    - key: fms-dashboard
-    - application: DemoApp1
-    - deployment_group: DemoAppServices1
-      - on:
-       - repo: $DOCKER_USERNAME/fms-dashboard
+  - provider: codedeploy
+    access_key_id: AKIAIWESFIDPAVNZH7XA
+    secret_access_key: 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
+    bucket: fms-dashboard-codedeploy
+    key: fms-dashboard
+    application: DemoApp1
+    deployment_group: DemoAppServices1
+    on: 
+      - repo: $DOCKER_USERNAME/fms-dashboard
