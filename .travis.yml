@@ -82,8 +82,8 @@ after_success:
     
 #deploy:
   #- provider: codedeploy
-   # access_key_id: AKIAIWESFIDPAVNZH7XA
-    #secret_access_key: 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
+   # access_key_id: $AWS_ACCESS_KEY
+    #secret_access_key: $AWS_SECRET_KEY
     #bucket: fms-dashboard-codedeploy
     #key: fms-dashboard
     #application: DemoApp1
