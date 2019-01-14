@@ -80,22 +80,22 @@ script:
 after_success:
     - bash <(curl -s https://codecov.io/bash)
     
-deploy:
-  - provider: s3
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: $AWS_SECRET_KEY
-    local_dir: dpl_cd_upload
-    skip_cleanup: true
-    on: $DOCKER_USERNAME/fms-dashboard
-      repo: travis-ci/cat-party
-    bucket: codepipeline-us-west-2-746906032635
+#deploy:
+  #- provider: s3
+    #access_key_id: $AWS_ACCESS_KEY
+    #secret_access_key: $AWS_SECRET_KEY
+    #local_dir: dpl_cd_upload
+    #skip_cleanup: true
+    #on: $DOCKER_USERNAME/fms-dashboard
+      #repo: travis-ci/cat-party
+    #bucket: codepipeline-us-west-2-746906032635
     
-  - provider: codedeploy
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: $AWS_SECRET_KEY
-    bucket: codepipeline-us-west-2-746906032635
-    key: fms-dashboard
-    application: DemoApp1
-    deployment_group: DemoAppServices1
-    on: 
-      - repo: $DOCKER_USERNAME/fms-dashboard
+  #- provider: codedeploy
+    #access_key_id: $AWS_ACCESS_KEY
+    #secret_access_key: $AWS_SECRET_KEY
+    #bucket: codepipeline-us-west-2-746906032635
+    #key: fms-dashboard
+    #application: DemoApp1
+    #deployment_group: DemoAppServices1
+    #on: 
+      #- repo: $DOCKER_USERNAME/fms-dashboard */
